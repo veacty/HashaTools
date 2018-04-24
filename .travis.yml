@@ -1,0 +1,9 @@
+language: java
+sudo: required
+
+matrix:
+  include:
+    - jdk: oraclejdk8
+
+notifications:
+  email: false

@@ -1,5 +1,6 @@
-package com.moizdrajcy.tools.user;
+package com.moizdrajcy.tools.user.impl;
 
+import com.moizdrajcy.tools.user.impl.UserImpl;
 import com.moizdrajcy.toolsapi.MapWithCache;
 import com.moizdrajcy.toolsapi.User;
 import com.moizdrajcy.toolsapi.UserManager;

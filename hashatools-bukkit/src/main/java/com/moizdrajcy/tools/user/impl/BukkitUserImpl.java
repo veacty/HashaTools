@@ -1,4 +1,4 @@
-package com.moizdrajcy.tools.user;
+package com.moizdrajcy.tools.user.impl;
 
 import com.moizdrajcy.toolsapi.util.Colors;
 import com.moizdrajcy.toolsapi.UserData;

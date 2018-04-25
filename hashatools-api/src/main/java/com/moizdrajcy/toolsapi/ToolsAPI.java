@@ -1,5 +1,7 @@
 package com.moizdrajcy.toolsapi;
 
+import com.moizdrajcy.toolsapi.database.sql.SQLDatabase;
+
 public class ToolsAPI implements Tools {
 
   private static Tools instance;
@@ -19,5 +21,10 @@ public class ToolsAPI implements Tools {
   @Override
   public UserManager getUserManager() {
     return instance.getUserManager();
+  }
+
+  @Override
+  public SQLDatabase getSQLDatabase() {
+    return instance.getSQLDatabase();
   }
 }

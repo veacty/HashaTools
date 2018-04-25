@@ -6,15 +6,15 @@ import com.moizdrajcy.toolsapi.command.CommandWrraper;
 import java.util.Arrays;
 import org.bukkit.command.CommandSender;
 
-public class TestCommand extends CommandWrraper {
+public class ExampleCommand extends CommandWrraper {
 
-  public TestCommand() {
+  public ExampleCommand() {
     super(
-        "test",
-        "",
-        "/test <arg1>",
-        "command.command",
-        Arrays.asList("testt", "testtt"),
+        "example",
+        "example command",
+        "/example <arg1> <arg2> <arg3>",
+        "hashatools.command.example",
+        Arrays.asList("exampl", "examp"),
         1,
         3);
   }

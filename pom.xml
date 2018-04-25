@@ -9,8 +9,8 @@
   <packaging>pom</packaging>
   <version>0.1</version>
   <modules>
-    <module>hashatools</module>
     <module>hashatools-api</module>
+    <module>hashatools-bukkit</module>
   </modules>
 
   <dependencies>

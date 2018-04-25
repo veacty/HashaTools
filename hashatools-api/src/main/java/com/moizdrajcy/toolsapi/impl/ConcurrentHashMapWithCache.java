@@ -2,9 +2,12 @@ package com.moizdrajcy.toolsapi.impl;
 
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.moizdrajcy.toolsapi.MapWithCache;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -43,6 +46,9 @@ public class ConcurrentHashMapWithCache<K, V> implements MapWithCache<K, V> {
   }
 
   public Collection<V> values() {
-    return null;
+    List<V> list = Lists.newArrayList();
+    list.addAll(this.map.values());
+    list.addAll(this.cache.asMap().values());
+    return list;
   }
 }

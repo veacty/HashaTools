@@ -15,6 +15,7 @@ public class UserManagerImpl implements UserManager {
   @Override
   public Optional<User> get(UUID uuid) {
     User user = this.userMap.get(uuid);
+
     if(user == null) {
       user = new UserImpl(uuid);
       this.userMap.put(uuid, user);

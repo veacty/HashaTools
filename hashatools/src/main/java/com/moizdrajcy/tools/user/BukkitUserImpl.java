@@ -1,6 +1,6 @@
-package com.moizdrajcy.tools.user.bukkit;
+package com.moizdrajcy.tools.user;
 
-import com.moizdrajcy.tools.util.Colors;
+import com.moizdrajcy.toolsapi.util.Colors;
 import com.moizdrajcy.toolsapi.UserData;
 import com.moizdrajcy.toolsapi.BukkitUser;
 import java.util.UUID;

@@ -3,9 +3,7 @@ package com.moizdrajcy.tools.api;
 import com.moizdrajcy.tools.user.UserManagerImpl;
 import com.moizdrajcy.toolsapi.Tools;
 import com.moizdrajcy.toolsapi.UserManager;
-import org.jetbrains.annotations.Nullable;
 
-@Nullable
 public class ToolsAPI implements Tools {
 
   private static Tools instance;

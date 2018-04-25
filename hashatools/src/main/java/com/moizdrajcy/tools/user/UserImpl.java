@@ -1,6 +1,5 @@
 package com.moizdrajcy.tools.user;
 
-import com.moizdrajcy.tools.user.bukkit.BukkitUserImpl;
 import com.moizdrajcy.toolsapi.BukkitUser;
 import com.moizdrajcy.toolsapi.User;
 import java.util.UUID;

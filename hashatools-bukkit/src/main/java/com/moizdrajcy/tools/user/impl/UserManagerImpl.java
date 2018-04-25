@@ -1,17 +1,15 @@
 package com.moizdrajcy.tools.user.impl;
 
-import com.moizdrajcy.tools.user.impl.UserImpl;
-import com.moizdrajcy.toolsapi.MapWithCache;
-import com.moizdrajcy.toolsapi.User;
-import com.moizdrajcy.toolsapi.UserManager;
-import com.moizdrajcy.toolsapi.impl.ConcurrentHashMapWithCache;
+import com.google.common.collect.Maps;
+import com.moizdrajcy.toolsapi.user.User;
+import com.moizdrajcy.toolsapi.user.UserManager;
+import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
-import java.util.concurrent.TimeUnit;
 
 public class UserManagerImpl implements UserManager {
 
-  private final MapWithCache<UUID, User> userMap = new ConcurrentHashMapWithCache<>(5, TimeUnit.MINUTES);
+  private final Map<UUID, User> userMap = Maps.newConcurrentMap();
 
   @Override
   public Optional<User> get(UUID uuid) {

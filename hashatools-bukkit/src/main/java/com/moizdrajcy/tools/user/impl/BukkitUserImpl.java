@@ -1,21 +1,22 @@
 package com.moizdrajcy.tools.user.impl;
 
 import com.moizdrajcy.toolsapi.util.Colors;
-import com.moizdrajcy.toolsapi.UserData;
-import com.moizdrajcy.toolsapi.BukkitUser;
+import com.moizdrajcy.toolsapi.user.BukkitUser;
 import java.util.UUID;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-public class BukkitUserImpl extends UserData<UUID> implements BukkitUser {
+public class BukkitUserImpl implements BukkitUser {
+
+  private final UUID uuid;
 
   public BukkitUserImpl(UUID uuid) {
-    super(uuid);
+    this.uuid = uuid;
   }
 
   @Override
   public Player getPlayer() {
-    return Bukkit.getPlayer(get());
+    return Bukkit.getPlayer(uuid);
   }
 
   @Override

@@ -1,12 +1,11 @@
 package com.moizdrajcy.tools.command;
 
-import com.moizdrajcy.toolsapi.User;
+import com.moizdrajcy.toolsapi.user.User;
 import com.moizdrajcy.toolsapi.command.CommandArgs;
-import com.moizdrajcy.toolsapi.command.CommandWrraper;
+import com.moizdrajcy.toolsapi.command.CommandWrapper;
 import java.util.Arrays;
-import org.bukkit.command.CommandSender;
 
-public class ExampleCommand extends CommandWrraper {
+public class ExampleCommand extends CommandWrapper {
 
   public ExampleCommand() {
     super(

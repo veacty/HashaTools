@@ -1,7 +1,7 @@
 package com.moizdrajcy.toolsapi.command;
 
 import com.moizdrajcy.toolsapi.ToolsAPI;
-import com.moizdrajcy.toolsapi.User;
+import com.moizdrajcy.toolsapi.user.User;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 

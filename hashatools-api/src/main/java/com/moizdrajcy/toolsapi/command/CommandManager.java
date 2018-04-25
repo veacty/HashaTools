@@ -28,7 +28,7 @@ public class CommandManager {
     }
   }
 
-  public void register(CommandWrraper commandWrraper) {
+  public void register(CommandWrapper commandWrraper) {
     Command command = new Command(commandWrraper.name, commandWrraper.description, commandWrraper.usage,
         commandWrraper.aliases) {
       @Override
@@ -53,7 +53,7 @@ public class CommandManager {
     this.commandMap.register("", command);
   }
 
-  public void register(CommandWrraper... commands) {
+  public void register(CommandWrapper... commands) {
     Arrays.stream(commands).forEach(this::register);
   }
 

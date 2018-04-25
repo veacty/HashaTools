@@ -1,4 +1,4 @@
-package com.moizdrajcy.toolsapi;
+package com.moizdrajcy.toolsapi.user;
 
 import java.util.UUID;
 

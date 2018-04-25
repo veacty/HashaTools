@@ -5,7 +5,7 @@ import com.moizdrajcy.tools.user.UsersListener;
 import com.moizdrajcy.tools.user.impl.UserManagerImpl;
 import com.moizdrajcy.toolsapi.Tools;
 import com.moizdrajcy.toolsapi.ToolsAPI;
-import com.moizdrajcy.toolsapi.UserManager;
+import com.moizdrajcy.toolsapi.user.UserManager;
 import com.moizdrajcy.toolsapi.command.CommandManager;
 import com.moizdrajcy.toolsapi.database.Database;
 import com.moizdrajcy.toolsapi.database.sql.SQLDatabase;

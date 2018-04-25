@@ -5,7 +5,6 @@ import com.moizdrajcy.toolsapi.database.sql.SQLDatabase;
 import com.moizdrajcy.toolsapi.database.sql.SQLDatabaseConsumer;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,11 +17,10 @@ public class SQLDatabaseImpl implements SQLDatabase {
     this.dataSource = new HikariDataSource(config);
   }
 
-
   @Override
   public void update(String query) throws DatabaseException {
-    try (Connection connection = this.dataSource.getConnection()) {
-      connection.prepareStatement(query).executeUpdate();
+    try (PreparedStatement statement = this.dataSource.getConnection().prepareStatement(query)) {
+      statement.executeUpdate();
     } catch (SQLException ex) {
       throw new DatabaseException(ex);
     }
@@ -30,8 +28,7 @@ public class SQLDatabaseImpl implements SQLDatabase {
 
   @Override
   public void update(String query, SQLDatabaseConsumer consumer) throws DatabaseException {
-    try (Connection connection = this.dataSource.getConnection()) {
-      PreparedStatement statement = connection.prepareStatement(query);
+    try (PreparedStatement statement = this.dataSource.getConnection().prepareStatement(query)) {
       consumer.accept(statement);
 
       statement.executeUpdate();
@@ -51,8 +48,7 @@ public class SQLDatabaseImpl implements SQLDatabase {
 
   @Override
   public ResultSet query(String query, SQLDatabaseConsumer consumer) throws DatabaseException {
-    try {
-      PreparedStatement statement = this.dataSource.getConnection().prepareStatement(query);
+    try (PreparedStatement statement = this.dataSource.getConnection().prepareStatement(query)) {
       consumer.accept(statement);
 
       return statement.executeQuery();

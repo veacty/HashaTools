@@ -2,7 +2,7 @@ package com.moizdrajcy.toolsapi.command;
 
 import java.util.List;
 
-public abstract class CommandWrraper implements ICommand {
+public abstract class CommandWrapper implements ICommand {
 
   final String name;
   final String description;
@@ -12,7 +12,7 @@ public abstract class CommandWrraper implements ICommand {
   final int minArgs;
   final int maxArgs;
 
-  public CommandWrraper(String name, String description, String usage, String permission,
+  public CommandWrapper(String name, String description, String usage, String permission,
       List<String> aliases, int minArgs, int maxArgs) {
     this.name = name;
     this.description = description;

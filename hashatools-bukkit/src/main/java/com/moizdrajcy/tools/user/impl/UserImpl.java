@@ -1,8 +1,7 @@
 package com.moizdrajcy.tools.user.impl;
 
-import com.moizdrajcy.tools.user.impl.BukkitUserImpl;
-import com.moizdrajcy.toolsapi.BukkitUser;
-import com.moizdrajcy.toolsapi.User;
+import com.moizdrajcy.toolsapi.user.BukkitUser;
+import com.moizdrajcy.toolsapi.user.User;
 import java.util.UUID;
 
 public class UserImpl implements User {
@@ -14,7 +13,7 @@ public class UserImpl implements User {
 
   public UserImpl(UUID uuid) {
     this.uuid = uuid;
-    this.bukkitUser = new BukkitUserImpl(uuid);
+    this.bukkitUser = new BukkitUserImpl(uuid, uuid1);
     this.name = getBukkitUser().getPlayer().getName();
   }
 

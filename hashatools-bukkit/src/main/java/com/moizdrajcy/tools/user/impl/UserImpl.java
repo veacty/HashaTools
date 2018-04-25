@@ -13,7 +13,7 @@ public class UserImpl implements User {
 
   public UserImpl(UUID uuid) {
     this.uuid = uuid;
-    this.bukkitUser = new BukkitUserImpl(uuid, uuid1);
+    this.bukkitUser = new BukkitUserImpl(uuid);
     this.name = getBukkitUser().getPlayer().getName();
   }
 

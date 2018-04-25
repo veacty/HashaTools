@@ -1,5 +1,6 @@
 package com.moizdrajcy.toolsapi;
 
+import com.google.common.base.Preconditions;
 import com.moizdrajcy.toolsapi.database.sql.SQLDatabase;
 import com.moizdrajcy.toolsapi.user.UserManager;
 
@@ -12,9 +13,7 @@ public class ToolsAPI implements Tools {
   }
 
   public static Tools get() {
-    if(instance == null) {
-      instance = new ToolsAPI();
-    }
+    Preconditions.checkNotNull(instance);
 
     return instance;
   }

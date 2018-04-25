@@ -1,4 +1,4 @@
-package com.moizdrajcy.tools.util;
+package com.moizdrajcy.toolsapi.util;
 
 import org.bukkit.ChatColor;
 

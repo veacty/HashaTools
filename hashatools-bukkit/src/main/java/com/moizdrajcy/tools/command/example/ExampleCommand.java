@@ -1,4 +1,4 @@
-package com.moizdrajcy.tools.command;
+package com.moizdrajcy.tools.command.example;
 
 import com.moizdrajcy.toolsapi.user.User;
 import com.moizdrajcy.toolsapi.command.CommandArgs;
@@ -14,8 +14,8 @@ public class ExampleCommand extends CommandWrapper {
         "/example <arg1> <arg2> <arg3>",
         "hashatools.command.example",
         Arrays.asList("exampl", "examp"),
-        1,
-        3);
+        1
+    );
   }
 
   @Override

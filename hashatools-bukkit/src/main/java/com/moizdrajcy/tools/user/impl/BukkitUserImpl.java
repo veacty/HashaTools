@@ -16,7 +16,7 @@ public class BukkitUserImpl implements BukkitUser {
 
   @Override
   public Player getPlayer() {
-    return Bukkit.getPlayer(uuid);
+    return Bukkit.getPlayer(this.uuid);
   }
 
   @Override

@@ -29,18 +29,19 @@ public class CommandManager {
   }
 
   public void register(CommandWrapper commandWrraper) {
-    Command command = new Command(commandWrraper.name, commandWrraper.description, commandWrraper.usage,
+    Command command = new Command(commandWrraper.name, commandWrraper.description,
+        commandWrraper.usage,
         commandWrraper.aliases) {
       @Override
       public boolean execute(CommandSender sender, String s, String[] strings) {
         CommandArgs args = new CommandArgsImpl(strings);
 
         if (!sender.hasPermission(commandWrraper.permission)) {
-          sendMessage(sender,":(");
+          sendMessage(sender, ":(");
           return true;
         }
 
-        if ((args.size() < commandWrraper.minArgs) || (args.size() > commandWrraper.maxArgs)) {
+        if ((args.size() < commandWrraper.minArgs)) {
           sendMessage(sender, commandWrraper.usage);
           return true;
         }
@@ -51,6 +52,7 @@ public class CommandManager {
     };
 
     this.commandMap.register("", command);
+
   }
 
   public void register(CommandWrapper... commands) {

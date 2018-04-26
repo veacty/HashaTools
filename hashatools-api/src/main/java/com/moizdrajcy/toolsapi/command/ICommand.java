@@ -14,14 +14,11 @@ public interface ICommand {
       return;
     }
 
-    executeSender(sender, args);
-  }
 
-  default void executeUser(User user, CommandArgs args) {
     throw new UnsupportedOperationException("ICommand has to implement execute");
   }
 
-  default void executeSender(CommandSender sender, CommandArgs args) {
+  default void executeUser(User user, CommandArgs args) {
     throw new UnsupportedOperationException("ICommand has to implement execute");
   }
 

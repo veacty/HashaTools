@@ -10,17 +10,15 @@ public abstract class CommandWrapper implements ICommand {
   final String permission;
   final List<String> aliases;
   final int minArgs;
-  final int maxArgs;
 
   public CommandWrapper(String name, String description, String usage, String permission,
-      List<String> aliases, int minArgs, int maxArgs) {
+      List<String> aliases, int minArgs) {
     this.name = name;
     this.description = description;
     this.usage = usage;
     this.permission = permission;
     this.aliases = aliases;
     this.minArgs = minArgs;
-    this.maxArgs = maxArgs;
   }
 
   public String getName() {

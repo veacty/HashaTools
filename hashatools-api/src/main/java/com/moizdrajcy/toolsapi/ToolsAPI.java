@@ -2,6 +2,7 @@ package com.moizdrajcy.toolsapi;
 
 import com.google.common.base.Preconditions;
 import com.moizdrajcy.toolsapi.database.sql.SQLDatabase;
+import com.moizdrajcy.toolsapi.home.HomeManager;
 import com.moizdrajcy.toolsapi.user.UserManager;
 
 public class ToolsAPI implements Tools {
@@ -26,5 +27,10 @@ public class ToolsAPI implements Tools {
   @Override
   public SQLDatabase getSQLDatabase() {
     return instance.getSQLDatabase();
+  }
+
+  @Override
+  public HomeManager getHomeManager() {
+    return instance.getHomeManager();
   }
 }

@@ -4,11 +4,14 @@ import com.moizdrajcy.tools.command.HomeCommand;
 import com.moizdrajcy.tools.command.SetHomeCommand;
 import com.moizdrajcy.tools.command.example.ExampleCommand;
 import com.moizdrajcy.tools.home.HomeManagerImpl;
-import com.moizdrajcy.tools.user.UsersListener;
+import com.moizdrajcy.tools.teleport.TeleportListeners;
+import com.moizdrajcy.tools.teleport.TeleportManagerImpl;
+import com.moizdrajcy.tools.user.UsersListeners;
 import com.moizdrajcy.tools.user.impl.UserManagerImpl;
 import com.moizdrajcy.toolsapi.Tools;
 import com.moizdrajcy.toolsapi.ToolsAPI;
 import com.moizdrajcy.toolsapi.home.HomeManager;
+import com.moizdrajcy.toolsapi.teleport.TeleportManager;
 import com.moizdrajcy.toolsapi.user.UserManager;
 import com.moizdrajcy.toolsapi.command.CommandManager;
 import com.moizdrajcy.toolsapi.database.Database;
@@ -21,6 +24,7 @@ public final class HashaTools extends JavaPlugin implements Tools {
   private SQLDatabase sqlDatabase;
   private UserManager userManager;
   private HomeManager homeManager;
+  private TeleportManager teleportManager;
 
   @Override
   public void onEnable() {
@@ -32,13 +36,18 @@ public final class HashaTools extends JavaPlugin implements Tools {
 
     this.userManager = new UserManagerImpl();
     this.homeManager = new HomeManagerImpl();
+    this.teleportManager = new TeleportManagerImpl(this);
 
     CommandManager commandManager = new CommandManager();
     commandManager.register(new ExampleCommand());
     commandManager.register(new SetHomeCommand(this));
     commandManager.register(new HomeCommand(this));
 
-    Bukkit.getPluginManager().registerEvents(new UsersListener(this), this);
+    registerListeners(this,
+        new UsersListeners(this),
+        new TeleportListeners(this)
+    );
+    Bukkit.getPluginManager().registerEvents(new UsersListeners(this), this);
 
   }
 
@@ -55,6 +64,11 @@ public final class HashaTools extends JavaPlugin implements Tools {
   @Override
   public HomeManager getHomeManager() {
     return this.homeManager;
+  }
+
+  @Override
+  public TeleportManager getTeleportManager() {
+    return this.teleportManager;
   }
 
 }

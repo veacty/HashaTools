@@ -7,11 +7,11 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-public class UsersListener implements Listener {
+public class UsersListeners implements Listener {
 
   private final HashaTools plugin;
 
-  public UsersListener(HashaTools plugin) {
+  public UsersListeners(HashaTools plugin) {
     Preconditions.checkNotNull(plugin);
 
     this.plugin = plugin;

@@ -8,7 +8,7 @@ import org.bukkit.inventory.ItemStack;
 
 public class ItemStackBuilder {
 
-  private ItemStack item;
+  private final ItemStack item;
 
   public ItemStackBuilder(Material material) {
     this.item = new ItemStack(material);

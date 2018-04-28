@@ -19,19 +19,7 @@
       <version>0.1</version>
       <scope>compile</scope>
     </dependency>
-    <dependency>
-      <groupId>org.diorite</groupId>
-      <artifactId>diorite-config-minimal</artifactId>
-      <version>1.2</version>
-    </dependency>
   </dependencies>
-
-  <repositories>
-    <repository>
-      <id>kacperduras-repo</id>
-      <url>https://repo.kacperduras.pl/content/groups/public/</url>
-    </repository>
-  </repositories>
 
   <build>
     <plugins>

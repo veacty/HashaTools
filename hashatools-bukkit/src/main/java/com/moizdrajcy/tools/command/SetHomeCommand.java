@@ -17,7 +17,7 @@ public class SetHomeCommand extends CommandWrapper {
         "/sethome ( name )",
         "hashatools.command.sethome",
         Collections.singletonList("ustawdom"),
-        0
+        1
     );
 
     this.plugin = plugin;
@@ -25,11 +25,6 @@ public class SetHomeCommand extends CommandWrapper {
 
   @Override
   public void executeUser(User user, CommandArgs args) {
-    if (args.length() < 1) {
-      user.getBukkitUser().sendMessage(getUsage());
-      return;
-    }
-
     if(this.plugin.getHomeManager().add(user, args.get(0))) {
       user.getBukkitUser().sendMessage("Your home has been set");
     }

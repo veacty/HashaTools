@@ -22,7 +22,7 @@ public class HomeCommand extends CommandWrapper {
         "/home ( name of home )",
         "hashatools.command.home",
         Collections.singletonList("dom"),
-        0
+        1
     );
 
     this.plugin = plugin;
@@ -30,11 +30,6 @@ public class HomeCommand extends CommandWrapper {
 
   @Override
   public void executeUser(User user, CommandArgs args) {
-    if (args.length() < 1) {
-      user.getBukkitUser().sendMessage("list of homes");
-      return;
-    }
-
     Optional<Home> home = this.plugin.getHomeManager().getHome(user, args.get(0));
 
     if (!home.isPresent()) {

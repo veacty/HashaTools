@@ -4,6 +4,7 @@ import com.moizdrajcy.toolsapi.util.Colors;
 import com.moizdrajcy.toolsapi.user.BukkitUser;
 import java.util.UUID;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
 public class BukkitUserImpl implements BukkitUser {
@@ -23,4 +24,5 @@ public class BukkitUserImpl implements BukkitUser {
   public void sendMessage(String message) {
     getPlayer().sendMessage(Colors.colored(message));
   }
+
 }

@@ -10,12 +10,12 @@ import com.moizdrajcy.tools.user.UsersListeners;
 import com.moizdrajcy.tools.user.impl.UserManagerImpl;
 import com.moizdrajcy.toolsapi.Tools;
 import com.moizdrajcy.toolsapi.ToolsAPI;
-import com.moizdrajcy.toolsapi.home.HomeManager;
-import com.moizdrajcy.toolsapi.teleport.TeleportManager;
-import com.moizdrajcy.toolsapi.user.UserManager;
 import com.moizdrajcy.toolsapi.command.CommandManager;
 import com.moizdrajcy.toolsapi.database.Database;
 import com.moizdrajcy.toolsapi.database.sql.SQLDatabase;
+import com.moizdrajcy.toolsapi.home.HomeManager;
+import com.moizdrajcy.toolsapi.teleport.TeleportManager;
+import com.moizdrajcy.toolsapi.user.UserManager;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -30,9 +30,10 @@ public final class HashaTools extends JavaPlugin implements Tools {
   public void onEnable() {
     ToolsAPI.setInstance(this);
 
-    Database database = new Database("localhost", 3306, "happitorudy", "root", "");
-    //database.connect();
-    //this.sqlDatabase = database.getSQLDatabase();
+    Database database = new Database("localhost", 3306,
+        "mordziaty", "root", "happitorudakurwa123");
+    database.connect();
+    this.sqlDatabase = database.getSQLDatabase();
 
     this.userManager = new UserManagerImpl();
     this.homeManager = new HomeManagerImpl();
@@ -47,7 +48,6 @@ public final class HashaTools extends JavaPlugin implements Tools {
         new UsersListeners(this),
         new TeleportListeners(this)
     );
-    Bukkit.getPluginManager().registerEvents(new UsersListeners(this), this);
 
   }
 

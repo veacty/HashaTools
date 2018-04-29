@@ -1,6 +1,5 @@
 package com.moizdrajcy.toolsapi.command;
 
-import com.moizdrajcy.toolsapi.command.impl.CommandArgsImpl;
 import com.moizdrajcy.toolsapi.util.Colors;
 import java.lang.reflect.Field;
 import java.util.Arrays;
@@ -21,32 +20,31 @@ public class CommandManager {
         this.commandMap = ((CommandMap) field.get(Bukkit.getServer()));
         field.setAccessible(false);
 
-      }
-      catch (IllegalAccessException | NoSuchFieldException e) {
+      } catch (IllegalAccessException | NoSuchFieldException e) {
         e.printStackTrace();
       }
     }
   }
 
-  public void register(CommandWrapper commandWrraper) {
-    Command command = new Command(commandWrraper.name, commandWrraper.description,
-        commandWrraper.usage,
-        commandWrraper.aliases) {
+  public void register(CommandHandler commandHandler) {
+    Command command = new Command(commandHandler.name, commandHandler.description,
+        commandHandler.usage,
+        commandHandler.aliases) {
       @Override
       public boolean execute(CommandSender sender, String s, String[] strings) {
-        CommandArgs args = new CommandArgsImpl(strings);
+        CommandArgs args = new CommandArgs(strings);
 
-        if (!sender.hasPermission(commandWrraper.permission)) {
-          sendMessage(sender, ":(");
+        if (!sender.hasPermission(commandHandler.permission)) {
+          sendMessage(sender, "&cI'm sorry, but you do not have permission to perform this command");
           return true;
         }
 
-        if ((args.size() < commandWrraper.minArgs)) {
-          sendMessage(sender, commandWrraper.usage);
+        if (args.size() < commandHandler.minArgs) {
+          sendMessage(sender, commandHandler.usage);
           return true;
         }
 
-        commandWrraper.execute(sender, args);
+        commandHandler.execute(sender, args);
         return true;
       }
     };
@@ -55,7 +53,7 @@ public class CommandManager {
 
   }
 
-  public void register(CommandWrapper... commands) {
+  public void register(CommandHandler... commands) {
     Arrays.stream(commands).forEach(this::register);
   }
 

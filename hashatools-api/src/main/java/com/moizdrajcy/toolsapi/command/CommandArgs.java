@@ -1,25 +1,35 @@
 package com.moizdrajcy.toolsapi.command;
 
-import com.moizdrajcy.toolsapi.command.impl.CommandArgsImpl;
+import com.google.common.base.Joiner;
+import java.util.Arrays;
 
-public interface CommandArgs {
+public class CommandArgs {
 
-  default CommandArgs of(String[] args) {
-    return new CommandArgsImpl(args);
+  private static final Joiner joiner = Joiner.on(' ');
+  private String[] args;
+
+  public CommandArgs(String[] args) {
+    this.args = args;
   }
 
-  int length();
+  public int length() {
+    return this.args.length;
+  }
 
-  default int size() {
+  public int size() {
     return this.length();
   }
 
-  String merge();
+  public String merge() {
+    return CommandArgs.joiner.join(this.args);
+  }
 
-  String get(int index);
+  public String get(int index) {
+    return this.args[index];
+  }
 
-  String get(int index, String def);
-
-  CommandArgs subArgs(int skip);
+  public String get(int index, String def) {
+    return (index < this.args.length) ? this.args[index] : def;
+  }
 
 }

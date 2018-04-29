@@ -1,18 +1,16 @@
 package com.moizdrajcy.tools.command;
 
 import com.moizdrajcy.tools.HashaTools;
-import com.moizdrajcy.toolsapi.command.CommandArgs;
-import com.moizdrajcy.toolsapi.command.CommandWrapper;
+import com.moizdrajcy.toolsapi.command.CommandHandler;
 import com.moizdrajcy.toolsapi.home.Home;
 import com.moizdrajcy.toolsapi.teleport.TeleportCallback;
 import com.moizdrajcy.toolsapi.user.User;
 import java.util.Collections;
 import java.util.Optional;
-import java.util.concurrent.TimeUnit;
 import org.bukkit.Bukkit;
 import org.bukkit.event.player.PlayerTeleportEvent;
 
-public class HomeCommand extends CommandWrapper {
+public class HomeCommand extends CommandHandler {
 
   private final HashaTools plugin;
 

@@ -1,12 +1,11 @@
 package com.moizdrajcy.tools.command;
 
 import com.moizdrajcy.tools.HashaTools;
-import com.moizdrajcy.toolsapi.command.CommandArgs;
-import com.moizdrajcy.toolsapi.command.CommandWrapper;
+import com.moizdrajcy.toolsapi.command.CommandHandler;
 import com.moizdrajcy.toolsapi.user.User;
 import java.util.Collections;
 
-public class SetHomeCommand extends CommandWrapper {
+public class SetHomeCommand extends CommandHandler {
 
   private final HashaTools plugin;
 

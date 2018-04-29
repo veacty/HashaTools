@@ -2,12 +2,13 @@ package com.moizdrajcy.tools.teleport;
 
 import com.google.common.collect.MapMaker;
 import com.moizdrajcy.tools.HashaTools;
-import com.moizdrajcy.toolsapi.teleport.Teleport;
 import com.moizdrajcy.toolsapi.teleport.TeleportCallback;
 import com.moizdrajcy.toolsapi.teleport.TeleportManager;
+import com.moizdrajcy.toolsapi.user.User;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -16,60 +17,55 @@ import org.bukkit.scheduler.BukkitTask;
 public class TeleportManagerImpl implements TeleportManager {
 
   private final HashaTools plugin;
-  private final Map<UUID, Teleport> teleportMap = new MapMaker().weakKeys().weakValues().makeMap();
+  private final Map<UUID, BukkitTask> teleportMap = new MapMaker().weakKeys().weakValues().makeMap();
+
+  private TeleportCallback teleportCallback;
 
   public TeleportManagerImpl(HashaTools plugin) {
     this.plugin = plugin;
   }
 
   @Override
-  public void teleport(Player player, TeleportCallback callback) {
-    if(isDuringTeleportation(player)) {
+  public void teleport(User user, TeleportCallback callback, long seconds) {
+    if(user.getBukkitUser().getTeleportation().isPresent()) {
       callback.duringTeleportation();
       return;
     }
 
-    Location before = player.getLocation();
+    callback.start();
+
+    user.getBukkitUser().setLastLocation(user.getBukkitUser().getPlayer().getLocation());
+
     BukkitTask task = new BukkitRunnable() {
       @Override
       public void run() {
+        remove(user);
         callback.success();
-        remove(player.getUniqueId());
       }
 
-    }.runTaskLater(this.plugin, 10*20);
+    }.runTaskLater(this.plugin, seconds*20);
 
-    Teleport teleport = new TeleportImpl(task, before, callback);
-    this.teleportMap.put(player.getUniqueId(), teleport);
+    user.getBukkitUser().setTeleportation(task);
+    this.teleportMap.put(user.getUUID(), task);
+    this.teleportCallback = callback;
   }
 
   @Override
-  public Optional<Teleport> getTeleport(UUID uuid) {
-    return Optional.ofNullable(this.teleportMap.get(uuid));
-  }
-
-  @Override
-  public Location getBefore(Player player) {
-    Optional<Teleport> teleport = getTeleport(player);
-
-    return teleport.map(Teleport::getBefore).orElse(null);
-  }
-
-  @Override
-  public void remove(UUID uuid) {
-    Optional<Teleport> teleport = getTeleport(uuid);
-    if (teleport.isPresent()) {
-      teleport.get().getTask().cancel();
-      teleport.get().getCallback().cancel();
-
-      this.teleportMap.remove(uuid);
+  public void cancel(User user) {
+    if (remove(user)) {
+      this.teleportCallback.cancel();
     }
   }
 
   @Override
-  public boolean isDuringTeleportation(UUID uuid) {
-    return this.teleportMap.containsKey(uuid);
+  public boolean remove(User user) {
+    if(user.getBukkitUser().getTeleportation().isPresent()) {
+      this.teleportMap.remove(user.getUUID());
+      user.getBukkitUser().setTeleportation(null);
+      return true;
+    }
 
+    return false;
   }
 
 }

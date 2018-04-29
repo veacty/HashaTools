@@ -3,6 +3,7 @@ package com.moizdrajcy.tools.user.impl;
 import com.moizdrajcy.toolsapi.user.BukkitUser;
 import com.moizdrajcy.toolsapi.user.User;
 import java.util.UUID;
+import org.bukkit.scheduler.BukkitTask;
 
 public class UserImpl implements User {
 
@@ -31,4 +32,5 @@ public class UserImpl implements User {
   public BukkitUser getBukkitUser() {
     return this.bukkitUser;
   }
+
 }

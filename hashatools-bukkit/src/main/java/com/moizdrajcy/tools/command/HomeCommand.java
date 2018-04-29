@@ -8,6 +8,7 @@ import com.moizdrajcy.toolsapi.teleport.TeleportCallback;
 import com.moizdrajcy.toolsapi.user.User;
 import java.util.Collections;
 import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 import org.bukkit.Bukkit;
 import org.bukkit.event.player.PlayerTeleportEvent;
 
@@ -46,8 +47,13 @@ public class HomeCommand extends CommandWrapper {
       return;
     }
 
-    this.plugin.getTeleportManager().teleport(user.getBukkitUser().getPlayer(),
+    this.plugin.getTeleportManager().teleport(user,
         new TeleportCallback() {
+          @Override
+          public void start() {
+            user.getBukkitUser().sendMessage("...");
+          }
+
           @Override
           public void success() {
             user.getBukkitUser().getPlayer().teleport(home.get().getLocation());
@@ -63,7 +69,7 @@ public class HomeCommand extends CommandWrapper {
           public void cancel() {
             user.getBukkitUser().sendMessage("&cTeleportion has been canceled");
           }
-        });
+        }, 10);
   }
 
 }

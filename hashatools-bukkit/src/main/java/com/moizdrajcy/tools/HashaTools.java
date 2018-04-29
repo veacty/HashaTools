@@ -31,7 +31,7 @@ public final class HashaTools extends JavaPlugin implements Tools {
     ToolsAPI.setInstance(this);
 
     Database database = new Database("localhost", 3306,
-        "mordziaty", "root", "happitorudakurwa123");
+        "mordziaty", "root", "");
     database.connect();
     this.sqlDatabase = database.getSQLDatabase();
 

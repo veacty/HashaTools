@@ -1,6 +1,7 @@
 package com.moizdrajcy.tools.command;
 
 import com.moizdrajcy.tools.HashaTools;
+import com.moizdrajcy.toolsapi.command.CommandArgs;
 import com.moizdrajcy.toolsapi.command.CommandHandler;
 import com.moizdrajcy.toolsapi.user.User;
 import java.util.Collections;

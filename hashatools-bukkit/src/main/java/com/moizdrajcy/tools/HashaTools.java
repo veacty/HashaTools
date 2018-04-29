@@ -12,28 +12,32 @@ import com.moizdrajcy.toolsapi.Tools;
 import com.moizdrajcy.toolsapi.ToolsAPI;
 import com.moizdrajcy.toolsapi.command.CommandManager;
 import com.moizdrajcy.toolsapi.database.Database;
-import com.moizdrajcy.toolsapi.database.sql.SQLDatabase;
+import com.moizdrajcy.toolsapi.database.DatabaseBuilder;
+import com.moizdrajcy.toolsapi.database.DatabaseSettings;
 import com.moizdrajcy.toolsapi.home.HomeManager;
 import com.moizdrajcy.toolsapi.teleport.TeleportManager;
 import com.moizdrajcy.toolsapi.user.UserManager;
-import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class HashaTools extends JavaPlugin implements Tools {
 
-  private SQLDatabase sqlDatabase;
   private UserManager userManager;
   private HomeManager homeManager;
   private TeleportManager teleportManager;
+  private Database database;
 
   @Override
   public void onEnable() {
     ToolsAPI.setInstance(this);
 
-    Database database = new Database("localhost", 3306,
-        "mordziaty", "root", "");
-    database.connect();
-    this.sqlDatabase = database.getSQLDatabase();
+    DatabaseSettings settings = new DatabaseSettings();
+    settings.setDatabase("mordziaty");
+
+    this.database = DatabaseBuilder.create()
+        .setup(settings)
+        .connect()
+        .createTables()
+        .build();
 
     this.userManager = new UserManagerImpl();
     this.homeManager = new HomeManagerImpl();
@@ -57,8 +61,8 @@ public final class HashaTools extends JavaPlugin implements Tools {
   }
 
   @Override
-  public SQLDatabase getSQLDatabase() {
-    return this.sqlDatabase;
+  public Database getDatabase() {
+    return this.database;
   }
 
   @Override

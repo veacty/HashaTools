@@ -1,5 +1,7 @@
 package com.moizdrajcy.tools.kit;
 
-public class KitManagerImpl {
+import com.moizdrajcy.toolsapi.kit.KitManager;
+
+public class KitManagerImpl implements KitManager {
 
 }

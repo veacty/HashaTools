@@ -1,7 +1,7 @@
 package com.moizdrajcy.toolsapi;
 
 import com.google.common.base.Preconditions;
-import com.moizdrajcy.toolsapi.database.sql.SQLDatabase;
+import com.moizdrajcy.toolsapi.database.Database;
 import com.moizdrajcy.toolsapi.home.HomeManager;
 import com.moizdrajcy.toolsapi.teleport.TeleportManager;
 import com.moizdrajcy.toolsapi.user.UserManager;
@@ -26,8 +26,8 @@ public class ToolsAPI implements Tools {
   }
 
   @Override
-  public SQLDatabase getSQLDatabase() {
-    return instance.getSQLDatabase();
+  public Database getDatabase() {
+    return instance.getDatabase();
   }
 
   @Override

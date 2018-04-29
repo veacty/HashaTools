@@ -1,25 +1,31 @@
-package com.moizdrajcy.toolsapi.database.sql.impl;
+package com.moizdrajcy.toolsapi.database;
 
-import com.moizdrajcy.toolsapi.database.DatabaseException;
-import com.moizdrajcy.toolsapi.database.sql.SQLDatabase;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.concurrent.Callable;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+import org.intellij.lang.annotations.Language;
 
-public class SQLDatabaseImpl implements SQLDatabase {
+public class DatabaseImpl implements Database {
 
   private final HikariDataSource dataSource;
 
-  public SQLDatabaseImpl(HikariConfig config) {
+  public DatabaseImpl(HikariConfig config) {
     this.dataSource = new HikariDataSource(config);
   }
 
   @Override
   public void update(String query) throws DatabaseException {
-    try (PreparedStatement statement = this.dataSource.getConnection().prepareStatement(query)) {
-      statement.executeUpdate();
+    try (Connection connection = this.dataSource.getConnection()) {
+      connection.prepareStatement(query).executeUpdate();
     } catch (SQLException ex) {
       throw new DatabaseException(ex);
     }

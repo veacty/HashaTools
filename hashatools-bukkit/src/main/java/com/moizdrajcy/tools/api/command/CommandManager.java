@@ -1,5 +1,6 @@
-package com.moizdrajcy.toolsapi.command;
+package com.moizdrajcy.tools.api.command;
 
+import com.moizdrajcy.tools.config.ToolsMessages;
 import com.moizdrajcy.toolsapi.util.Colors;
 import java.lang.reflect.Field;
 import java.util.Arrays;
@@ -35,7 +36,7 @@ public class CommandManager {
         CommandArgs args = new CommandArgs(strings);
 
         if (!sender.hasPermission(commandHandler.permission)) {
-          sendMessage(sender, "&cI'm sorry, but you do not have permission to perform this command");
+          sendMessage(sender, ToolsMessages.NOT_PERMISSION);
           return true;
         }
 

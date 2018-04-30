@@ -1,8 +1,8 @@
 package com.moizdrajcy.tools.command;
 
 import com.moizdrajcy.tools.HashaTools;
-import com.moizdrajcy.toolsapi.command.CommandArgs;
-import com.moizdrajcy.toolsapi.command.CommandHandler;
+import com.moizdrajcy.tools.api.command.CommandArgs;
+import com.moizdrajcy.tools.api.command.CommandHandler;
 import com.moizdrajcy.toolsapi.home.Home;
 import com.moizdrajcy.toolsapi.teleport.TeleportCallback;
 import com.moizdrajcy.toolsapi.user.User;
@@ -18,7 +18,7 @@ public class HomeCommand extends CommandHandler {
   public HomeCommand(HashaTools plugin) {
     super(
         "home",
-        "example command",
+        "",
         "/home ( name of home )",
         "hashatools.command.home",
         Collections.singletonList("dom"),
@@ -42,7 +42,7 @@ public class HomeCommand extends CommandHandler {
         home.get().getLocation());
     Bukkit.getPluginManager().callEvent(teleportEvent);
 
-    if(teleportEvent.isCancelled()) {
+    if (teleportEvent.isCancelled()) {
       return;
     }
 
@@ -64,10 +64,6 @@ public class HomeCommand extends CommandHandler {
             user.getBukkitUser().sendMessage("&cYou are already teleporting");
           }
 
-          @Override
-          public void cancel() {
-            user.getBukkitUser().sendMessage("&cTeleportion has been canceled");
-          }
         }, 10);
   }
 

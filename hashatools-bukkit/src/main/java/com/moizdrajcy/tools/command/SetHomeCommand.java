@@ -1,8 +1,8 @@
 package com.moizdrajcy.tools.command;
 
 import com.moizdrajcy.tools.HashaTools;
-import com.moizdrajcy.toolsapi.command.CommandArgs;
-import com.moizdrajcy.toolsapi.command.CommandHandler;
+import com.moizdrajcy.tools.api.command.CommandArgs;
+import com.moizdrajcy.tools.api.command.CommandHandler;
 import com.moizdrajcy.toolsapi.user.User;
 import java.util.Collections;
 
@@ -13,7 +13,7 @@ public class SetHomeCommand extends CommandHandler {
   public SetHomeCommand(HashaTools plugin) {
     super(
         "sethome",
-        "set your home",
+        "",
         "/sethome ( name )",
         "hashatools.command.sethome",
         Collections.singletonList("ustawdom"),

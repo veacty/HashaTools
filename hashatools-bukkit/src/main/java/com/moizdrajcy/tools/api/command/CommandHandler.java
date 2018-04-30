@@ -1,4 +1,4 @@
-package com.moizdrajcy.toolsapi.command;
+package com.moizdrajcy.tools.api.command;
 
 import java.util.List;
 

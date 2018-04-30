@@ -1,8 +1,8 @@
 package com.moizdrajcy.tools.command.example;
 
-import com.moizdrajcy.toolsapi.command.CommandArgs;
+import com.moizdrajcy.tools.api.command.CommandArgs;
 import com.moizdrajcy.toolsapi.user.User;
-import com.moizdrajcy.toolsapi.command.CommandHandler;
+import com.moizdrajcy.tools.api.command.CommandHandler;
 import java.util.Arrays;
 
 public class ExampleCommand extends CommandHandler {

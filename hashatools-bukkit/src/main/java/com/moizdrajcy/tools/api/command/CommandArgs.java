@@ -1,7 +1,6 @@
-package com.moizdrajcy.toolsapi.command;
+package com.moizdrajcy.tools.api.command;
 
 import com.google.common.base.Joiner;
-import java.util.Arrays;
 
 public class CommandArgs {
 

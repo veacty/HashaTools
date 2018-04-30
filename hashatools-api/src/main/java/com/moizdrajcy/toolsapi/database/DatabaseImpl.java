@@ -3,16 +3,8 @@ package com.moizdrajcy.toolsapi.database;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.concurrent.Callable;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
-import org.intellij.lang.annotations.Language;
 
 public class DatabaseImpl implements Database {
 
@@ -33,8 +25,8 @@ public class DatabaseImpl implements Database {
 
   @Override
   public ResultSet query(String query) throws DatabaseException {
-    try {
-      return this.dataSource.getConnection().prepareStatement(query).executeQuery();
+    try (Connection connection = this.dataSource.getConnection()) {
+      return connection.prepareStatement(query).executeQuery();
     } catch (SQLException ex) {
       throw new DatabaseException(ex);
     }

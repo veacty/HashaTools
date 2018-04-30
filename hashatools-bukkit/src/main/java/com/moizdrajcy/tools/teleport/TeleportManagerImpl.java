@@ -6,11 +6,7 @@ import com.moizdrajcy.toolsapi.teleport.TeleportCallback;
 import com.moizdrajcy.toolsapi.teleport.TeleportManager;
 import com.moizdrajcy.toolsapi.user.User;
 import java.util.Map;
-import java.util.Optional;
 import java.util.UUID;
-import java.util.concurrent.TimeUnit;
-import org.bukkit.Location;
-import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 
@@ -18,8 +14,6 @@ public class TeleportManagerImpl implements TeleportManager {
 
   private final HashaTools plugin;
   private final Map<UUID, BukkitTask> teleportMap = new MapMaker().weakKeys().weakValues().makeMap();
-
-  private TeleportCallback teleportCallback;
 
   public TeleportManagerImpl(HashaTools plugin) {
     this.plugin = plugin;
@@ -47,13 +41,12 @@ public class TeleportManagerImpl implements TeleportManager {
 
     user.getBukkitUser().setTeleportation(task);
     this.teleportMap.put(user.getUUID(), task);
-    this.teleportCallback = callback;
   }
 
   @Override
   public void cancel(User user) {
     if (remove(user)) {
-      this.teleportCallback.cancel();
+      user.getBukkitUser().sendMessage("&cTeleport canceled");
     }
   }
 

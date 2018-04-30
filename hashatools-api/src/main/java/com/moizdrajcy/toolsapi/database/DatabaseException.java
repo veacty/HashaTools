@@ -1,7 +1,5 @@
 package com.moizdrajcy.toolsapi.database;
 
-import java.sql.SQLException;
-
 public class DatabaseException extends RuntimeException {
 
   private static final long serialVersionUID = 666;
@@ -10,8 +8,16 @@ public class DatabaseException extends RuntimeException {
     super();
   }
 
-  public DatabaseException(SQLException exception) {
-    super(exception);
+  public DatabaseException(String message) {
+    super(message);
+  }
+
+  public DatabaseException(String message, Throwable cause) {
+    super(message, cause);
+  }
+
+  public DatabaseException(Throwable cause) {
+    super(cause);
   }
 
 }

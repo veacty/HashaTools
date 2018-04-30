@@ -8,6 +8,4 @@ public interface TeleportCallback {
 
   void duringTeleportation();
 
-  void cancel();
-
 }

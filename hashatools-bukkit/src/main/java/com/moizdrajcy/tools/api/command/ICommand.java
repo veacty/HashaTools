@@ -1,4 +1,4 @@
-package com.moizdrajcy.toolsapi.command;
+package com.moizdrajcy.tools.api.command;
 
 import com.moizdrajcy.toolsapi.ToolsAPI;
 import com.moizdrajcy.toolsapi.user.User;
@@ -15,11 +15,11 @@ public interface ICommand {
     }
 
 
-    throw new UnsupportedOperationException("ICommand has to implement execute");
+    throw new UnsupportedOperationException("ICommand has to implement execute or execute method");
   }
 
   default void executeUser(User user, CommandArgs args) {
-    throw new UnsupportedOperationException("ICommand has to implement execute");
+    throw new UnsupportedOperationException("ICommand has to implement execute or executeUser method");
   }
 
 }

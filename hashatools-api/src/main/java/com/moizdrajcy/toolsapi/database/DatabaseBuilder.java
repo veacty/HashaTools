@@ -48,9 +48,9 @@ public final class DatabaseBuilder {
     Preconditions.checkNotNull(this.database);
 
     this.database.update(
-        "CREATE TABLE IF NOT EXISTS `tools_users` (" +
-            "`uuid` BINARY(16) NOT NULL," +
-            "PRIMARY KEY(UUID));");
+        "CREATE TABLE IF NOT EXISTS `tools_users` ("
+            + "`uuid` BINARY(16) NOT NULL,"
+            + "PRIMARY KEY(UUID));");
 
     return this;
   }

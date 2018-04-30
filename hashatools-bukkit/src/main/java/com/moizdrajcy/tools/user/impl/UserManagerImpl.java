@@ -16,8 +16,7 @@ public class UserManagerImpl implements UserManager {
     User user = this.userMap.get(uuid);
 
     if(user == null) {
-      user = new UserImpl(uuid);
-      this.userMap.put(uuid, user);
+      this.userMap.put(uuid, user = new UserImpl(uuid));
     }
 
     return Optional.of(user);

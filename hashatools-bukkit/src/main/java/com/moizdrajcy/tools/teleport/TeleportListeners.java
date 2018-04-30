@@ -26,8 +26,10 @@ public class TeleportListeners implements Listener {
     if(user.getBukkitUser().getTeleportation().isPresent()) {
       Location before = user.getBukkitUser().getLastLocation().get();
 
-      if(now.getX() != before.getX() || now.getZ() != before.getZ()) {
-        this.plugin.getTeleportManager().cancel(user);
+      if(now.getBlockX() != before.getBlockX()
+              || now.getBlockZ() != before.getBlockZ()
+              || now.getY() != before.getY()) {
+        this.plugin.getTeleportManager().cancel(user); //TODO: fix cancelling tasks
       }
     }
   }

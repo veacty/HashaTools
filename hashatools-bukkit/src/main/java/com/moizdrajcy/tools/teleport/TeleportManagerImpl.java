@@ -2,6 +2,7 @@ package com.moizdrajcy.tools.teleport;
 
 import com.google.common.collect.MapMaker;
 import com.moizdrajcy.tools.HashaTools;
+import com.moizdrajcy.tools.config.ToolsMessages;
 import com.moizdrajcy.toolsapi.teleport.TeleportCallback;
 import com.moizdrajcy.toolsapi.teleport.TeleportManager;
 import com.moizdrajcy.toolsapi.user.User;
@@ -46,7 +47,7 @@ public class TeleportManagerImpl implements TeleportManager {
   @Override
   public void cancel(User user) {
     if (remove(user)) {
-      user.getBukkitUser().sendMessage("&cTeleport canceled");
+      user.getBukkitUser().sendMessage(ToolsMessages.TELEPORT$CANCELED);
     }
   }
 

@@ -3,6 +3,7 @@ package com.moizdrajcy.tools.command;
 import com.moizdrajcy.tools.HashaTools;
 import com.moizdrajcy.tools.api.command.CommandArgs;
 import com.moizdrajcy.tools.api.command.CommandHandler;
+import com.moizdrajcy.tools.config.ToolsMessages;
 import com.moizdrajcy.toolsapi.home.Home;
 import com.moizdrajcy.toolsapi.teleport.TeleportCallback;
 import com.moizdrajcy.toolsapi.user.User;
@@ -50,18 +51,18 @@ public class HomeCommand extends CommandHandler {
         new TeleportCallback() {
           @Override
           public void start() {
-            user.getBukkitUser().sendMessage("...");
+            user.getBukkitUser().sendMessage(ToolsMessages.TELEPORT$START);
           }
 
           @Override
           public void success() {
             user.getBukkitUser().getPlayer().teleport(home.get().getLocation());
-            user.getBukkitUser().sendMessage("&aTeleportion success");
+            user.getBukkitUser().sendMessage(ToolsMessages.TELEPORT$SUCCESS);
           }
 
           @Override
           public void duringTeleportation() {
-            user.getBukkitUser().sendMessage("&cYou are already teleporting");
+            user.getBukkitUser().sendMessage(ToolsMessages.TELEPORT$ALREADY);
           }
 
         }, 10);

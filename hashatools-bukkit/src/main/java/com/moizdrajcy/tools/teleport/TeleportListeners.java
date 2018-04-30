@@ -29,7 +29,7 @@ public class TeleportListeners implements Listener {
       if(now.getBlockX() != before.getBlockX()
               || now.getBlockZ() != before.getBlockZ()
               || now.getY() != before.getY()) {
-        this.plugin.getTeleportManager().cancel(user); //TODO: fix cancelling tasks
+        this.plugin.getTeleportManager().cancel(user);
       }
     }
   }
